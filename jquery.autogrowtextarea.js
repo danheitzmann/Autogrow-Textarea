@@ -25,7 +25,10 @@ jQuery.fn.autoGrow = function() {
 
 		var sendContentToMirror = function (textarea) {
 			mirror.innerHTML = String(textarea.value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br />') + '.<br/>.';
-
+			
+			// width fix for LT IE9
+			mirror.style.width = textarea.style.width;
+			
 			if (jQuery(textarea).height() != jQuery(mirror).height())
 				jQuery(textarea).height(jQuery(mirror).height());
 		}
